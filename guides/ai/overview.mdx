@@ -1,58 +1,46 @@
 ---
 title: "AI overview"
-description: "What the ShineCRM AI does, what it doesn't do, and what data it sees."
+description: "What ShineCRM AI does, what it does not do, and what data it sees."
 ---
 
-ShineCRM has four built-in AI features. They all run on Anthropic Claude models. Three of them run automatically on customer activity. One is an interactive chat you open from the menu.
+ShineCRM AI is a set of features that help you run your business with less manual work. Three of them run automatically on customer activity. A fourth surface lets you connect your own Claude account to ShineCRM through MCP and operate the entire CRM by chat.
 
-## What the AI does
+## What it does
 
 <CardGroup cols={2}>
-  <Card title="AI Assistant chat" icon="message" href="/guides/ai/chat-assistant">
-    Operator-facing chat for business questions, message drafting, and sending review requests.
-  </Card>
   <Card title="Incoming message suggestions" icon="envelope-open-text" href="/guides/ai/incoming-message-suggestions">
-    Automatic analysis of every inbound SMS and email. Suggests follow-up changes and pipeline updates.
+    Automatic analysis of every inbound SMS and email. Suggests follow-up changes and pipeline updates that land in your Command Centre for approval.
   </Card>
   <Card title="Review request drafting" icon="star" href="/guides/ai/review-requests">
-    After a job completes, drafts personalized review request messages for each platform.
+    After a job completes, drafts personalized review request messages for each unreviewed platform.
   </Card>
   <Card title="Message rewriter" icon="wand-magic-sparkles" href="/guides/ai/message-rewriter">
-    On-demand polish for SMS and email drafts before you send them.
+    On-demand polish for SMS and email drafts before you send them, tuned to channel.
+  </Card>
+  <Card title="MCP server (coming soon)" icon="plug" href="/guides/ai/mcp-server">
+    Connect your own Claude account to ShineCRM. Ask Claude to query, draft, and (with permission) update your CRM in natural language.
   </Card>
 </CardGroup>
 
-## What the AI does not do
+## What ShineCRM AI does not do
 
-The AI never sends a message, changes a pipeline stage, schedules a job, or modifies your CRM without your approval. Every automatic feature creates a **suggestion** that lands in your Command Centre. You review and approve or reject it.
+ShineCRM AI never sends a message, changes a pipeline stage, schedules a job, or modifies your CRM without an approval step. Every automatic feature creates a **suggestion** that lands in your Command Centre. You review and approve or reject it.
 
-The two exceptions are:
+The one exception: review request drafting after a job. Drafts land in your scheduled messages list as pending follow-ups. They wait there until their scheduled send time, and you can edit or cancel them at any point before that.
 
-1. **Review request drafting after a job.** Drafts land in your scheduled messages list as pending follow-ups, not approved. You still review them before send time.
-2. **Chat-triggered review requests.** When you explicitly tell the AI Assistant to send a review request to a specific customer, it schedules an approved follow-up one minute out so the next send cycle picks it up.
-
-The AI does not have access to:
+ShineCRM AI does not have access to:
 
 - Photos or attachments
 - Phone call recordings
 - Other organizations' data (every query is scoped to your organization)
 - Payment card details
 
-## Which models are used
+## Privacy
 
-| Feature | Default model |
-| --- | --- |
-| AI Assistant chat | Claude Sonnet 4.6 |
-| Incoming message suggestions | Claude Haiku 4.5 |
-| Review request drafting | Claude Haiku 4.5 |
-| Message rewriter | Claude Haiku 4.5 |
+Your data is processed by the Anthropic API for the duration of a single request. Under Anthropic's commercial API terms, your inputs and outputs are not used to train Anthropic's models. No customer data is shared with any other AI provider.
 
-Heavier reasoning (Sonnet) is used for free-form chat where quality matters most. Lighter, faster models (Haiku) are used for high-volume background tasks. Model choice is managed by ShineCRM and can be tuned per organization on request.
+You can read Anthropic's [commercial terms](https://www.anthropic.com/legal/commercial-terms) and [training policy](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training) directly.
 
 ## Cost and usage
 
-Every AI call is logged with token counts and a USD cost. You can see total AI usage for the current month under **Settings → Usage** (owner and admin only).
-
-## Privacy
-
-Your organization's data only ever flows to one external destination during AI work: the Anthropic API, for the duration of a single request. Anthropic does not train on API traffic. No data is shared with any other AI provider.
+Every AI call is logged with token counts and a USD cost. Owner and admin users can see total AI usage for the current month under **Settings → Usage**.

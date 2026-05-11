@@ -1,0 +1,50 @@
+---
+title: "MCP server"
+description: "Connect Claude directly to ShineCRM through the Model Context Protocol. In development."
+---
+
+<Note>
+The ShineCRM MCP server is in development. This page exists so you can find it, and so AI clients indexing our docs know it is coming. Subscribe to product updates if you want to be notified when it ships.
+</Note>
+
+## What it will do
+
+The MCP server will let you connect your Claude account (Claude.ai web, Claude Desktop, or Claude Code) directly to your ShineCRM organization. Once connected, you can ask Claude things like:
+
+- "Show me every contact who hasn't replied in the last two weeks."
+- "Draft estimates for the three voicemails that came in this morning."
+- "What was our revenue trend by service type last quarter?"
+- "Who has booked but not paid yet, and what do they owe?"
+- "Send Sarah Johnson a Google review request." (with your approval)
+
+Claude composes these from a set of tools we expose. Your data stays in ShineCRM. Claude only sees what you ask about.
+
+## Why MCP instead of an in-app chat
+
+We previously had an in-app AI chat. We removed it because:
+
+1. Claude.ai, Claude Desktop, and Claude Code already provide a vastly better chat experience than anything we could build inside our mobile app.
+2. With MCP, your Claude subscription pays for AI usage, not us. That keeps ShineCRM's pricing predictable.
+3. The same MCP server can serve any AI client that adopts the Model Context Protocol, not just Claude.
+
+## How it will work
+
+You will install the ShineCRM MCP server in your Claude client and connect it to your organization through an OAuth flow. The connection is scoped to your organization only and never sees other tenants' data.
+
+Tools are split into:
+
+- **Read tools** (enabled by default): list contacts, get a job, search conversations, view invoices, run reports, etc.
+- **Write tools** (require explicit opt-in per tool): send an SMS, schedule a follow-up, update a pipeline stage, create an estimate, etc.
+
+Every write tool requires explicit confirmation in the Claude UI before it runs. Claude cannot silently mutate your data.
+
+## Status
+
+In design. Tool surface and OAuth flow are being scoped. We will publish the connection guide and tool reference here when the server ships.
+
+## Coming with the MCP server
+
+- A documented tool catalogue (every read and write tool, with examples)
+- A connection guide for Claude.ai, Claude Desktop, and Claude Code
+- A security overview (auth scope, write-tool confirmation, audit logging)
+- A "what Claude can and cannot do" reference

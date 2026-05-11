@@ -31,10 +31,10 @@
             "group": "AI assistant",
             "pages": [
               "guides/ai/overview",
-              "guides/ai/chat-assistant",
               "guides/ai/incoming-message-suggestions",
               "guides/ai/review-requests",
-              "guides/ai/message-rewriter"
+              "guides/ai/message-rewriter",
+              "guides/ai/mcp-server"
             ]
           }
         ]
