@@ -1,0 +1,59 @@
+---
+title: "Incoming message suggestions"
+description: "How ShineCRM automatically analyzes inbound customer messages and suggests actions."
+---
+
+Every time a customer sends you an SMS or email, ShineCRM runs the message through the AI to look for actions worth taking. The AI does not act on its own. It writes **suggestions** to your Command Centre, and you decide whether to approve or reject each one.
+
+## When it runs
+
+Automatically, on every inbound SMS and inbound email that lands on one of your tracked numbers or addresses. No setup required.
+
+## What the AI sees
+
+For each inbound message, the AI is given:
+
+- The contact's name, phone, email, and current pipeline stage
+- The last 20 messages on that conversation (oldest first)
+- Any pending or approved follow-ups already scheduled for the contact
+- Your active AI instructions (the per-organization tuning text)
+- Recent feedback you have left on past suggestions
+
+## What the AI can suggest
+
+The AI returns a list of suggested actions. Each suggestion has an action type, the data needed to execute it, and a short reasoning line. The action types are:
+
+| Type | What it proposes |
+| --- | --- |
+| `create_followup` | Schedule a new follow-up message at a specific time on a specific channel |
+| `update_followup` | Change the body, channel, or scheduled time of a pending follow-up |
+| `cancel_followup` | Cancel a pending follow-up that is no longer appropriate |
+| `update_pipeline` | Move the contact to a different pipeline stage |
+
+The AI is told to be **conservative**. If a message does not clearly call for an action, it returns an empty list and nothing lands in Command Centre.
+
+## How to review suggestions
+
+Open **Settings → Command Centre**. Pending suggestions are grouped by contact. Each card shows:
+
+- The action the AI is proposing
+- The reasoning
+- Approve and reject buttons
+
+Approving a suggestion executes it (creates the follow-up, updates the pipeline, etc.). Rejecting it dismisses it and feeds into future suggestion quality.
+
+## Tuning the suggestions
+
+The AI reads two things you can edit, in this order of priority:
+
+1. **AI instructions.** Free-form text where you describe how your business works ("when a customer asks about pricing, suggest creating an estimate", "we don't book on Sundays", etc.). Managed by ShineCRM and tunable on request.
+2. **Past feedback.** When you reject suggestions, the AI sees a sample of recent rejections on its next run and tries to avoid the same mistake.
+
+If you find the AI is over-suggesting or missing things consistently, contact support and we can tighten the instructions for your organization.
+
+## What it cannot do
+
+- Send a message on your behalf
+- Change a contact, job, or invoice directly
+- Look at attachments or images in the message
+- See messages on conversations other than the one the inbound came in on

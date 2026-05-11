@@ -1,0 +1,60 @@
+---
+title: "Review request drafting"
+description: "How ShineCRM drafts personalized review requests after a job completes."
+---
+
+When you mark a job as complete, ShineCRM automatically drafts personalized review request SMS messages for each platform the customer has not yet reviewed on. The drafts are scheduled as pending follow-ups, and you review them before they send.
+
+## When it runs
+
+Two triggers:
+
+1. **Job completion.** When a job's status flips to complete, the AI drafts review requests for any of Google, Facebook, or Yelp that you have a review link for, in your configured platform priority order, and that the customer has not already reviewed on.
+2. **Customer leaves a review.** When you flip the `reviewed_google`, `reviewed_facebook`, or `reviewed_yelp` flag to true on a contact, the AI proposes cancelling any scheduled review requests on that platform so you don't pester them after they've already left a review.
+
+Both paths only run when **review requests are enabled** under **Settings → Reviews**.
+
+## What the AI sees
+
+For each completed job, the AI is given:
+
+- The customer's name
+- The job address
+- The list of services performed on the job
+- The technician's notes from the job
+- Your configured tone, max attempts per platform, and gap days between attempts
+- The review links for each unreviewed platform
+
+## What it produces
+
+A JSON array of drafts, one per platform per attempt. Each draft becomes a row in your scheduled messages list with:
+
+- Channel: SMS
+- Status: `pending` (waiting for your approval)
+- Body: a short, warm SMS under 320 characters that includes the review link
+- Scheduled time: starting tomorrow, with your configured gap between attempts
+
+The AI is instructed to reference something specific from the job when possible (a service performed, a note from the tech) instead of generic boilerplate. It will not invent details.
+
+## What you control
+
+Under **Settings → Reviews** you can configure:
+
+- Whether review requests are enabled at all
+- Review links for Google, Facebook, and Yelp
+- Platform priority order (which platform the AI tries first)
+- Max attempts per platform
+- Gap days between attempts
+- Tone (e.g. "friendly, concise, grateful")
+- The system prompt the AI uses for drafting (advanced)
+
+## How review-completion cleanup works
+
+When you mark a customer as having reviewed on a platform, the AI looks at their pending review request follow-ups for that platform and proposes cancellation. The cancellation proposal lands in **Settings → Command Centre** as a pending suggestion. You approve or reject it. Cancellations are not automatic.
+
+## What it cannot do
+
+- Send the review request itself (your normal scheduled-messages send cycle does that)
+- Send a review request for a platform you have not configured a link for
+- Send a review request to a contact who has no phone number
+- Re-request a review on a platform the customer has already reviewed on

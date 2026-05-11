@@ -1,0 +1,52 @@
+---
+title: "Message rewriter"
+description: "On-demand polish for SMS and email drafts before you send them."
+---
+
+The message rewriter is the "polish my draft" button inside customer conversations. You type a rough draft, tap the rewrite action, and the AI returns a cleaner version tuned to the channel.
+
+## When to use it
+
+Use it when you have a draft already typed and you want the AI to fix tone, grammar, or length without inventing new content. If you don't have a draft yet, use the [AI Assistant chat](/guides/ai/chat-assistant) instead.
+
+## How it adapts to channel
+
+The rewriter checks whether the conversation is SMS or email and applies different rules:
+
+**SMS:**
+- Tight, ideally under 320 characters
+- One or two short paragraphs at most
+- No formal greeting or sign-off
+- Conversational, first-name basis
+
+**Email:**
+- Paragraphs allowed for readability
+- Natural greeting and sign-off only if your original had one
+- No subject line (your subject is handled separately)
+- No signature block (the app appends one)
+
+## What gets preserved
+
+The rewriter is instructed to **preserve facts exactly**, including:
+
+- Prices, dates, addresses, names
+- Links (review request links, payment links, etc.)
+- The original intent and meaning of the message
+
+It only fixes tone, grammar, awkward phrasing, and typos.
+
+## Extra instructions
+
+You can pass an optional instruction along with the rewrite (e.g. "make it warmer," "shorter," "more apologetic"). The AI tries to honor it without altering facts.
+
+## What it does not do
+
+- Add information that wasn't in your draft
+- Add a subject line for emails
+- Add a signature block
+- Wrap the output in quotes or commentary (it returns the rewritten body only)
+- Translate to another language (unless you ask in your extra instruction)
+
+## Cost
+
+The rewriter uses Claude Haiku 4.5 by default, the cheapest and fastest model. Per-call cost is typically under a fraction of a cent.

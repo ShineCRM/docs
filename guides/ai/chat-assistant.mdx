@@ -1,0 +1,45 @@
+---
+title: "AI Assistant chat"
+description: "The operator-facing AI chat for business questions, message drafting, and review requests."
+---
+
+The AI Assistant is an interactive chat that lives at **Menu → AI Assistant**. Use it for business questions, drafting messages, brainstorming, or sending review requests to specific customers.
+
+## What you can ask it
+
+The AI Assistant is a general business assistant scoped to your organization. It knows your business name. It does not have a live view of your CRM. Ask it:
+
+- "Draft a friendly follow-up message for a customer who hasn't replied in a week."
+- "What should I charge for a 2-storey window cleaning job?"
+- "Help me write a Google review reply to this complaint: [paste]."
+- "Send a Google review request to Sarah Johnson." (See [Sending review requests from chat](#sending-review-requests-from-chat).)
+
+## What it can actually do
+
+Most chat replies are text only. The one real action it can take is **scheduling a review request follow-up** for a specific customer. To trigger it, ask explicitly:
+
+> "Send Sarah a Google review request."
+
+If the customer name matches a contact with a phone number and your review settings have a Google link configured, the AI drafts a short SMS, schedules it for one minute out as an approved follow-up, and confirms what it did. A green pill on the message shows which platform the review went to.
+
+## What it cannot do
+
+- Look up jobs, invoices, estimates, or pipeline state in real time
+- Modify any record other than scheduling the review request follow-up described above
+- Read or send messages on existing conversations
+- Access photos, attachments, or call recordings
+
+## Chat history
+
+Chat history is stored locally on your device. Clearing the app or signing out wipes it. History does not sync across devices. The **Clear** button in the header top right wipes it manually.
+
+## Cost
+
+Each reply shows a small cost badge ($X.XX) so you can see roughly what you are spending. Free-form chat uses Claude Sonnet 4.6 by default. Long conversations cost more because the full recent history is sent on every turn (last 20 messages).
+
+## When to use it vs the message rewriter
+
+- **AI Assistant:** brainstorming, drafting from scratch, business questions, sending review requests
+- **Message rewriter:** you already have a draft typed in a customer conversation and want it polished
+
+See [Message rewriter](/guides/ai/message-rewriter) for the in-composer polish feature.
