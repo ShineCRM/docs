@@ -23,7 +23,8 @@
           {
             "group": "Account management",
             "pages": [
-              "account-management/delete-account"
+              "account-management/delete-account",
+              "account-management/delete-data"
             ]
           }
         ]
