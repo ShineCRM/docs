@@ -1,33 +1,37 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API reference"
+description: "The ShineCRM REST API for programmatic access to your organization data."
 ---
 
+The ShineCRM REST API lets you read and write contacts, jobs, estimates, invoices, and messages programmatically.
+
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+The public API is currently in private beta. Detailed endpoint documentation is being prepared. If you need API access today, contact us at [support@shinecx.com](mailto:support@shinecx.com).
 </Note>
 
-## Welcome
+## What you'll be able to do
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+- Sync contacts and jobs with external CRMs (HubSpot, Salesforce, Pipedrive, etc.)
+- Push estimates and invoices into accounting systems (QuickBooks, Xero)
+- Build custom dashboards and reports
+- Connect ShineCRM to your existing tooling via webhooks
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+The API uses API keys scoped to a single organization. Keys are generated from **Settings then API keys** in the operator dashboard (coming soon).
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+## Base URL
+
 ```
+https://api.shinecx.com/v1
+```
+
+## Rate limits
+
+Standard limits are 100 requests per minute per organization. Higher limits are available on request.
+
+## Coming next
+
+- Full endpoint reference (auto-generated from OpenAPI)
+- Webhook event catalog
+- SDK libraries for JavaScript, Python, and Go
